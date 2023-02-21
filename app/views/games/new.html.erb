@@ -1,0 +1,14 @@
+<h1 class="text-primary">New Game</h1>
+  <div id="randomLetters">
+    <ul class="d-flex list-inline justify-content-center p-1 fs-3">
+      <% @letters.each do |letter| %>
+        <li><%= letter.upcase %></li>
+      <% end %>
+    </ul>
+  </div>
+  <p>What's the longest word you can find?</p>
+  <form action="/score" method="post" data-turbo="false">
+    <input type="text" name="word" value="<%= params[:word] %>">
+    <input type="submit" value="Play">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
